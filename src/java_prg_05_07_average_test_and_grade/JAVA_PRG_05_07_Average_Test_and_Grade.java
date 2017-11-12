@@ -5,6 +5,7 @@
  */
 package java_prg_05_07_average_test_and_grade;
 
+import java.util.Scanner;
 /**
  *
  * @author bluebackdev
@@ -33,7 +34,88 @@ public class JAVA_PRG_05_07_Average_Test_and_Grade {
      */
     public static void main(String[] args)
     {
-        // TODO code application logic here
+        double dblTest1;
+        double dblTest2;
+        double dblTest3;
+        double dblTest4;
+        double dblTest5;
+        double dblTestAvg;
+        
+        dblTest1 = getScore();
+        dblTest2 = getScore();
+        dblTest3 = getScore();
+        dblTest4 = getScore();
+        dblTest5 = getScore();
+        
+        dblTestAvg = getAvgScore(dblTest1, dblTest2, dblTest3, dblTest4,
+                dblTest5);
+        
+        System.out.println("Test 1:");
+        displayGrade(dblTest1);
+        
+        System.out.println("Test 2:");
+        displayGrade(dblTest2);
+        
+        System.out.println("Test 3:");
+        displayGrade(dblTest3);
+        
+        System.out.println("Test 4:");
+        displayGrade(dblTest4);
+        
+        System.out.println("Test 5:");
+        displayGrade(dblTest5);
+        
+        System.out.println("Average test value:");
+        displayGrade(dblTestAvg);
     }
     
+    public static double getScore()
+    {
+        double dblScore;
+        
+        Scanner scrKeyboard = new Scanner(System.in);
+        
+        do
+        {
+            System.out.print("Please enter a test score: ");
+            
+            dblScore = scrKeyboard.nextDouble();
+        } while (dblScore < 0 || dblScore > 100);
+        
+        return dblScore;
+    }
+    
+    public static double getAvgScore(double dblTest1, double dblTest2,
+            double dblTest3, double dblTest4, double dblTest5)
+    {
+        double dblTestAvg;
+        
+        final int INT_NUM_TESTS = 5;
+        
+        dblTestAvg = (dblTest1 + dblTest2 + dblTest3 + dblTest4 + dblTest5) /
+                INT_NUM_TESTS;
+        
+        return dblTestAvg;
+    }
+    
+    public static void displayGrade(double dblTestScore)
+    {
+        char chrLetterGrade;
+        
+        if (dblTestScore < 100 && dblTestScore >= 90)
+            chrLetterGrade = 'A';
+        else if (dblTestScore < 90 && dblTestScore >= 80)
+            chrLetterGrade = 'B';
+        else if (dblTestScore < 80 && dblTestScore >= 70)
+            chrLetterGrade = 'C';
+        else if (dblTestScore < 70 && dblTestScore >= 60)
+            chrLetterGrade = 'D';
+        else if (dblTestScore < 60)
+            chrLetterGrade = 'F';
+        else
+            chrLetterGrade = 'X';
+        
+        System.out.println("Test score: " + dblTestScore +
+                ", grade: " + chrLetterGrade);
+    }
 }
